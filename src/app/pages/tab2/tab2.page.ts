@@ -1,0 +1,14 @@
+import { DeseosService } from 'src/app/service/deseos.service';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-tab2',
+  templateUrl: 'tab2.page.html'
+})
+export class Tab2Page {
+
+  constructor(public deseosService: DeseosService) {
+    console.log('tab 2');
+  }
+
+}
