@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor(public deseosService: DeseosService) {
-    console.log('tab 2');
+  constructor() {
   }
 
 }

@@ -29,6 +29,11 @@ export class DeseosService {
     return this.listas.find(element => element.id === idLista);
   }
 
+  eliminarLista(lista: Lista) {
+    const indice = this.listas.indexOf(lista);
+    this.listas.splice(indice, 1);
+  }
+
   cargarStorage() {
     if (localStorage.getItem('data') != null) {
       this.listas = JSON.parse(localStorage.getItem('data'));

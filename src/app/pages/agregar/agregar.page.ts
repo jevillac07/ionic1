@@ -12,12 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 export class AgregarPage implements OnInit {
   listaObtenida: Lista;
   descripcion = '';
+  pendientes = true;
 
   constructor(private deseosService: DeseosService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
     const idLista = this.route.snapshot.paramMap.get('idLista');
+    this.pendientes = (this.route.snapshot.paramMap.get('tab') === '1') ? true : false;
     this.listaObtenida = this.deseosService.obtenerLista(idLista);
   }
 
@@ -41,6 +43,11 @@ export class AgregarPage implements OnInit {
       this.listaObtenida.completado = false;
     }
 
+    this.deseosService.guardarStorage();
+  }
+
+  eliminarItem(i: number) {
+    this.listaObtenida.items.splice(i, 1);
     this.deseosService.guardarStorage();
   }
 }

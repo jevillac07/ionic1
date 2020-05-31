@@ -9,12 +9,9 @@ import { AlertController } from '@ionic/angular';
   templateUrl: 'tab1.page.html'
 })
 export class Tab1Page {
-  listas: Lista[] = [];
-
   constructor(public deseosService: DeseosService,
               private router: Router,
               private alertController: AlertController) {
-    this.listas = deseosService.listas;
   }
 
   agregarLista() {
@@ -42,8 +39,12 @@ export class Tab1Page {
         }, {
           text: 'Ok',
           handler: (data) => {
+            if (data.titulo.length < 1) {
+              return;
+            }
+
             const lista = this.deseosService.agregarStorage(data.titulo);
-            this.router.navigateByUrl(`/tabs/agregar/${ lista.id }`);
+            this.router.navigateByUrl(`/tabs/agregar/${ lista.id }/1`);
           }
         }
       ]
